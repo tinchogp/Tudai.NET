@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Noticias</h2>
 
-    <asp:GridView ID="gvNoticias" runat="server"
+    <asp:GridView ID="gvNoticias" runat="server" CssClass="table table-hover" GridLines="None" BorderStyle="None"
         AutoGenerateColumns="true"></asp:GridView>
 
 </asp:Content>
