@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="insert.aspx.cs" Inherits="TUDAI.insert" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="alta_noticia.aspx.cs" Inherits="TUDAI.AltaNoticia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,6 +13,11 @@
     <p>
         <asp:Calendar ID="date_fecha" runat="server" ></asp:Calendar>
     </p>
+    <div class="form-group">            
+        <asp:DropDownList ID="ddl_categorias" runat="server" DataValueField="Id" DataTextField="Nombre">
+
+        </asp:DropDownList>            
+    </div>
     <div class="form-group">
         <asp:Button ID="btn_submit" runat="server" OnClick="Publicar_Noticia" Text="Publicar" CssClass="btn btn-default"/>
     </div>

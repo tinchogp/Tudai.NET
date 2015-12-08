@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="alta_categoria.aspx" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -77,10 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="insert.aspx" />
+    <Content Include="alta_noticia.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alta_categoria.aspx.cs">
+      <DependentUpon>alta_categoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="alta_categoria.aspx.designer.cs">
+      <DependentUpon>alta_categoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -88,12 +96,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="insert.aspx.cs">
-      <DependentUpon>insert.aspx</DependentUpon>
+    <Compile Include="alta_noticia.aspx.cs">
+      <DependentUpon>alta_noticia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="insert.aspx.designer.cs">
-      <DependentUpon>insert.aspx</DependentUpon>
+    <Compile Include="alta_noticia.aspx.designer.cs">
+      <DependentUpon>alta_noticia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
