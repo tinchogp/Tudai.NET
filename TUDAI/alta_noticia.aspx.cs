@@ -1,5 +1,7 @@
 ﻿using System;
 using DAL;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TUDAI
 {
@@ -7,13 +9,16 @@ namespace TUDAI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarDdls();
+            if (!IsPostBack)
+            {
+                CargarDdls();
+            }
         }
 
         private void CargarDdls()
         {
             ddl_categorias.DataSource = new CategoriaBusiness().GetCategorias();
-            ddl_categorias.DataBind();
+            ddl_categorias.DataBind();   
         }
 
         protected void Publicar_Noticia(object sender, EventArgs e)
@@ -25,8 +30,10 @@ namespace TUDAI
                 Fecha = date_fecha.SelectedDate,
                 IdCategoria = int.Parse(ddl_categorias.SelectedValue)
             };
-            new NoticiaBusiness().InsertNoticia(oNoticia);
-            
+            using (NoticiaBusiness n = new NoticiaBusiness())
+            {
+                n.InsertNoticia(oNoticia);
+            }
             lbl_resultado.Text = "Noticia publicada correctamente";            
             
         }

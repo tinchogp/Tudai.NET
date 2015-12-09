@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class NoticiaBusiness
+    public class NoticiaBusiness : IDisposable
     {
         public void InsertNoticia(Noticia oNoticia)
         {
@@ -63,6 +63,11 @@ namespace DAL
             {
                 oConn.Close();
             }
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

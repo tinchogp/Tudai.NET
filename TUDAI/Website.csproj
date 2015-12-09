@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="alta_categoria.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">
@@ -102,6 +103,9 @@
     </Compile>
     <Compile Include="alta_noticia.aspx.designer.cs">
       <DependentUpon>alta_noticia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
