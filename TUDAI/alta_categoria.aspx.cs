@@ -16,11 +16,17 @@ namespace TUDAI
                 {                
                     Nombre = txt_nombre.Text
                 };
-                new CategoriaBusiness().InsertCategoria(oCategoria);
-            
-                lbl_resultado.Text = "Categoria publicada correctamente";
+                try {  
+                    new CategoriaBusiness().InsertCategoria(oCategoria);
+                    lbl_resultado.Text = "Categoria publicada correctamente";
+                }
+                catch(Exception ex) {
+                    lbl_resultado.Text = "Hubo un error: "+ex.Message;
+                }
             }
-            lbl_resultado.Text = "Por favor, complete los campos obligatorios del formulario";
+            else {  
+                lbl_resultado.Text = "Por favor, complete los campos obligatorios del formulario";
+            }
         }
     }
 }
