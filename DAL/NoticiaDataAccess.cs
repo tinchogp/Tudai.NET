@@ -14,6 +14,7 @@ namespace DAL
                 oComm.Transaction = oTran;
 
                 oComm.CommandType = CommandType.Text;
+                // Nombres de las columnas:
                 oComm.CommandText = string.Format("INSERT INTO {0}.{1}(titulo,fecha,cuerpo,id_categoria) VALUES (@titulo, @fecha, @cuerpo, @id_categoria)", Constants.esquema, Constants.tablaNoticias);
 
                 oComm.Parameters.AddWithValue("@titulo", oNoticia.Titulo);

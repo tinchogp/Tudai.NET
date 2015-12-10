@@ -37,5 +37,6 @@ namespace TUDAI
             lbl_resultado.Text = "Noticia publicada correctamente";            
             
         }
+
     }
 }
