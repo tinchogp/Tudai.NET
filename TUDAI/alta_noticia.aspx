@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>
-        <asp:Label Text="" ID="accionNoticia" runat="server" ></asp:Label>
+        <asp:Label Text="" ID="accionNoticia" runat="server" >Nueva Noticia</asp:Label>
     </h2>
 
     <div class="form-group">
@@ -20,8 +20,8 @@
 
         </asp:DropDownList>            
     </div>
-    <div class="form-group">
-        <asp:Button ID="btn_submit" runat="server" OnClick="Publicar_Noticia" Text="Publicar" CssClass="btn btn-default"/>
+    <div class="form-group" id="editBtn">
+        <asp:Button ID="btn_submit" runat="server" Text="Publicar" CssClass="btn btn-default"/>
     </div>
 
     <asp:Label Text="" ID="lbl_resultado" runat="server" ></asp:Label>

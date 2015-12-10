@@ -13,33 +13,59 @@ namespace TUDAI
             if (!IsPostBack)
             {
                 CargarDdls();
-               
+                if (Request.QueryString[id_noticia] != null)
+                {
+                    var oNoticia = new Noticia()
+                {
+                    Id = int.Parse(Request.QueryString[id_noticia]),
+
+                };
+                
+                    NoticiaBusiness noticiaByID = new NoticiaBusiness();
+                    var noticiaM = noticiaByID.GetNoticiaById(oNoticia);
+
+                    txt_titulo.Text = noticiaM.Tables[0].Rows[0]["titulo"].ToString();
+                    txt_cuerpo.Text = noticiaM.Tables[0].Rows[0]["cuerpo"].ToString();
+                    date_fecha.SelectedDate = DateTime.Parse(noticiaM.Tables[0].Rows[0]["fecha"].ToString());
+                    if (noticiaM.Tables[0].Rows[0]["id_categoria"] != DBNull.Value)
+                        ddl_categorias.SelectedIndex = int.Parse(noticiaM.Tables[0].Rows[0]["id_categoria"].ToString());
+                }
+
             }
 
             if (Request.QueryString[id_noticia] != null)
             {
                 accionNoticia.Text = "Editar Noticia";
-                var oNoticia = new Noticia()
-                {
-                    Id = int.Parse(Request.QueryString[id_noticia]),
 
-                };
-                NoticiaBusiness noticiaByID = new NoticiaBusiness();
-                var noticiaM = noticiaByID.GetNoticiaById(oNoticia);
 
-                txt_titulo.Text = noticiaM.Tables[0].Rows[0]["titulo"].ToString();
-                txt_cuerpo.Text = noticiaM.Tables[0].Rows[0]["cuerpo"].ToString();
-                date_fecha.SelectedDate = DateTime.Parse(noticiaM.Tables[0].Rows[0]["fecha"].ToString());
-                ddl_categorias.Text = noticiaM.Tables[0].Rows[0]["id_categoria"].ToString();
-
+                btn_submit.Click += Editar_Noticia;
 
             }
-            
-                
-            
+            else
+            {
+                btn_submit.Click += Publicar_Noticia;
+            }
 
+    }
 
+        private void Editar_Noticia(object sender, EventArgs e)
+        {
+            var oNoticia = new Noticia()
+            {
+                Id = int.Parse(Request.QueryString[id_noticia]),
+                Titulo = txt_titulo.Text,
+                Cuerpo = txt_cuerpo.Text,
+                Fecha = date_fecha.SelectedDate,
+                IdCategoria = int.Parse(ddl_categorias.SelectedValue)
+            };
+            using (NoticiaBusiness n = new NoticiaBusiness())
+            {
+                n.updateNoticia(oNoticia);
+            }
+            lbl_resultado.Text = "Noticia actualizada correctamente";
         }
+
+
 
         private void CargarDdls()
         {
