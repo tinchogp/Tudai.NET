@@ -25,8 +25,11 @@
           <asp:boundfield datafield="id_categoria"
             convertemptystringtonull="true"
             headertext="ID Categoría"/>
-          <asp:hyperlinkfield text="Editar"
-            navigateurl="~\alta_noticia.aspx"            
+          <asp:hyperlinkfield
+            text="Editar"          
+            datatextformatstring="{0:c}"
+            datanavigateurlfields="id"
+            datanavigateurlformatstring="~\alta_noticia.aspx?id={0}"          
             headertext="Editar"
             target="_blank" />
 
