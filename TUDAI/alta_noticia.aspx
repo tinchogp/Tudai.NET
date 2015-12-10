@@ -2,7 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Nueva noticia</h2>
+    <h2>
+        <asp:Label Text="" ID="accionNoticia" runat="server" ></asp:Label>
+    </h2>
 
     <div class="form-group">
         <asp:TextBox ID="txt_titulo" runat="server" placeholder="Titulo de la noticia" CssClass="form-control"></asp:TextBox>
