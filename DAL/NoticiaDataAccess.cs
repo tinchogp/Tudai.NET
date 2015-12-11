@@ -14,12 +14,13 @@ namespace DAL
                 oComm.Transaction = oTran;
 
                 oComm.CommandType = CommandType.Text;
-                oComm.CommandText = string.Format("INSERT INTO {0}.{1}(titulo,fecha,cuerpo,id_categoria) VALUES (@titulo, @fecha, @cuerpo, @id_categoria)", Constants.esquema, Constants.tablaNoticias);
+                oComm.CommandText = string.Format("INSERT INTO {0}.{1}(titulo,fecha,cuerpo,id_categoria,autor) VALUES (@titulo, @fecha, @cuerpo, @id_categoria, @autor)", Constants.esquema, Constants.tablaNoticias);
 
                 oComm.Parameters.AddWithValue("@titulo", oNoticia.Titulo);
                 oComm.Parameters.AddWithValue("@fecha", oNoticia.Fecha);
                 oComm.Parameters.AddWithValue("@cuerpo", oNoticia.Cuerpo);                
                 oComm.Parameters.AddWithValue("@id_categoria", oNoticia.IdCategoria == null ? DBNull.Value : (object)oNoticia.IdCategoria);
+                oComm.Parameters.AddWithValue("@autor", oNoticia.Autor == null ? DBNull.Value : (object)oNoticia.Autor);
 
                 oComm.ExecuteNonQuery();
             }
@@ -34,12 +35,13 @@ namespace DAL
 
                 oComm.CommandType = CommandType.Text;
 
-                oComm.CommandText = string.Format("UPDATE {0}.{1} SET titulo=@titulo,fecha=@fecha,cuerpo=@cuerpo,id_categoria=@id_categoria WHERE id=@id", Constants.esquema, Constants.tablaNoticias);
+                oComm.CommandText = string.Format("UPDATE {0}.{1} SET titulo=@titulo,fecha=@fecha,cuerpo=@cuerpo,id_categoria=@id_categoria, autor=@autor WHERE id=@id", Constants.esquema, Constants.tablaNoticias);
 
                 oComm.Parameters.AddWithValue("@titulo", oNoticia.Titulo);
                 oComm.Parameters.AddWithValue("@fecha", oNoticia.Fecha);
                 oComm.Parameters.AddWithValue("@cuerpo", oNoticia.Cuerpo);
                 oComm.Parameters.AddWithValue("@id_categoria", oNoticia.IdCategoria == null ? DBNull.Value : (object)oNoticia.IdCategoria);
+                oComm.Parameters.AddWithValue("@autor", oNoticia.Autor == null ? DBNull.Value : (object)oNoticia.Autor);
                 oComm.Parameters.AddWithValue("@id", oNoticia.Id);
 
                 oComm.ExecuteNonQuery();
@@ -59,9 +61,38 @@ namespace DAL
                         oComm.Transaction = oTran;
 
                         oComm.CommandType = CommandType.Text;
-                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria] FROM {0}.{1} WHERE id=@id", Constants.esquema, Constants.tablaNoticias);
+                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria],[autor] FROM {0}.{1} WHERE id=@id", Constants.esquema, Constants.tablaNoticias);
 
                         oComm.Parameters.AddWithValue("id",oNoticia.Id);
+
+                        adapter.SelectCommand = oComm;
+                        adapter.Fill(ds);
+
+                        return ds;
+                    }
+                    finally
+                    {
+                    }
+                }
+            }
+        }
+
+        public DataSet GetByAutor(SqlConnection oConn, SqlTransaction oTran, Noticia oNoticia)
+        {
+            using (SqlDataAdapter adapter = new SqlDataAdapter())
+            {
+                using (SqlCommand oComm = new SqlCommand())
+                {
+                    try
+                    {
+                        DataSet ds = new DataSet();
+                        oComm.Connection = oTran != null ? oTran.Connection : oConn;
+                        oComm.Transaction = oTran;
+
+                        oComm.CommandType = CommandType.Text;
+                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria],[autor] FROM {0}.{1} WHERE autor LIKE %@autor%", Constants.esquema, Constants.tablaNoticias);
+
+                        oComm.Parameters.AddWithValue("autor", oNoticia.Autor);
 
                         adapter.SelectCommand = oComm;
                         adapter.Fill(ds);
@@ -88,7 +119,7 @@ namespace DAL
                         oComm.Transaction = oTran;
 
                         oComm.CommandType = CommandType.Text;
-                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria] FROM {0}.{1}", Constants.esquema, Constants.tablaNoticias);
+                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria],[autor] FROM {0}.{1}", Constants.esquema, Constants.tablaNoticias);
                         
                         adapter.SelectCommand = oComm;
                         adapter.Fill(ds);

@@ -80,7 +80,9 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="alta_noticia.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="alta_categoria.aspx.cs">
@@ -140,7 +142,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49859</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49859/</IISUrl>
+          <IISUrl>http://localhost:41111/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

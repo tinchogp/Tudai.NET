@@ -27,8 +27,10 @@ namespace TUDAI
                     txt_titulo.Text = noticiaM.Tables[0].Rows[0]["titulo"].ToString();
                     txt_cuerpo.Text = noticiaM.Tables[0].Rows[0]["cuerpo"].ToString();
                     date_fecha.SelectedDate = DateTime.Parse(noticiaM.Tables[0].Rows[0]["fecha"].ToString());
+                    if (noticiaM.Tables[0].Rows[0]["autor"] != DBNull.Value)
+                        txt_autor.Text= noticiaM.Tables[0].Rows[0]["autor"].ToString();
                     if (noticiaM.Tables[0].Rows[0]["id_categoria"] != DBNull.Value)
-                        ddl_categorias.SelectedIndex = int.Parse(noticiaM.Tables[0].Rows[0]["id_categoria"].ToString());
+                        ddl_categorias.SelectedValue = noticiaM.Tables[0].Rows[0]["id_categoria"].ToString();
                 }
 
             }
@@ -56,7 +58,9 @@ namespace TUDAI
                 Titulo = txt_titulo.Text,
                 Cuerpo = txt_cuerpo.Text,
                 Fecha = date_fecha.SelectedDate,
-                IdCategoria = int.Parse(ddl_categorias.SelectedValue)
+                IdCategoria = int.Parse(ddl_categorias.SelectedValue),
+                Autor = txt_autor.Text
+                
             };
             using (NoticiaBusiness n = new NoticiaBusiness())
             {
@@ -80,7 +84,8 @@ namespace TUDAI
                 Titulo = txt_titulo.Text,
                 Cuerpo = txt_cuerpo.Text,
                 Fecha = date_fecha.SelectedDate,
-                IdCategoria = int.Parse(ddl_categorias.SelectedValue)
+                IdCategoria = int.Parse(ddl_categorias.SelectedValue),
+                Autor = txt_autor.Text
             };
             using (NoticiaBusiness n = new NoticiaBusiness())
             {

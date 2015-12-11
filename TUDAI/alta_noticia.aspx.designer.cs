@@ -13,6 +13,15 @@ namespace TUDAI {
     public partial class AltaNoticia {
         
         /// <summary>
+        /// lbl_resultado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_resultado;
+        
+        /// <summary>
         /// accionNoticia control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,15 @@ namespace TUDAI {
         protected global::System.Web.UI.WebControls.TextBox txt_cuerpo;
         
         /// <summary>
+        /// txt_autor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_autor;
+        
+        /// <summary>
         /// date_fecha control.
         /// </summary>
         /// <remarks>
@@ -65,14 +83,5 @@ namespace TUDAI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_submit;
-        
-        /// <summary>
-        /// lbl_resultado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_resultado;
     }
 }

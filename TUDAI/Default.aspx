@@ -22,6 +22,9 @@
           <asp:boundfield datafield="cuerpo"
             convertemptystringtonull="true"
             headertext="Cuerpo"/>
+          <asp:boundfield datafield="autor"
+            convertemptystringtonull="true"
+            headertext="Autor"/>
           <asp:boundfield datafield="id_categoria"
             convertemptystringtonull="true"
             headertext="ID Categoría"/>
