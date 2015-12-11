@@ -90,9 +90,9 @@ namespace DAL
                         oComm.Transaction = oTran;
 
                         oComm.CommandType = CommandType.Text;
-                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria],[autor] FROM {0}.{1} WHERE autor LIKE %@autor%", Constants.esquema, Constants.tablaNoticias);
+                        oComm.CommandText = string.Format("SELECT [id],[titulo],[fecha],[cuerpo],[id_categoria],[autor] FROM {0}.{1} WHERE autor LIKE @autor", Constants.esquema, Constants.tablaNoticias);
 
-                        oComm.Parameters.AddWithValue("autor", oNoticia.Autor);
+                        oComm.Parameters.AddWithValue("autor", "%"+oNoticia.Autor+"%");
 
                         adapter.SelectCommand = oComm;
                         adapter.Fill(ds);

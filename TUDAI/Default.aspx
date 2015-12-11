@@ -3,9 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>MiNombre</h1>
-    <asp:Label CssClass="" Text="Minombre" runat="server"></asp:Label>
+    <asp:Label ID="lbl_nombre" CssClass="" Text="Minombre" runat="server"></asp:Label>
     <h2>Noticias</h2>
-
+     
+    <asp:ScriptManager EnablePartialRendering="true" ID="ScriptManager1" runat="server" />
+    <asp:UpdatePanel runat="server" ID="updatePanel1" UpdateMode="Conditional">
+    <ContentTemplate>
+       <div class="form-group col-md-4">
+        <asp:TextBox ID="txt_busqueda" placeholder="Ingrese un autor" CssClass="form-control " runat="server"></asp:TextBox>
+        <asp:Button ID="btn_filtrar" CssClass="btn btn-default" Text="Buscar" runat="server" OnClick="btn_filtrar_Click" />
+    </div>
+    
     <asp:GridView ID="gvNoticias" runat="server" CssClass="table table-hover" GridLines="None" BorderStyle="None"
         AutoGenerateColumns="false">
         
@@ -39,5 +47,7 @@
         </columns>
 
     </asp:GridView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
 </asp:Content>

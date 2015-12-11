@@ -14,12 +14,14 @@
 <body>
     <div class="container">
     <h1>APLICACION WEB TUDAI</h1>
+    
     <ul>
         <li><a href="Default.aspx">Consulta de noticias</a></li>
         <li><a href="alta_noticia.aspx">Nueva noticia</a></li>
         <li><a href="alta_categoria.aspx">Nueva categoria</a></li>
     </ul>
     <form id="form1" runat="server">
+        
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
